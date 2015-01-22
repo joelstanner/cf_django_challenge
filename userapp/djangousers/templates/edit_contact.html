@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block body %}
   <div class="container">
-    <h1 class="text-center">Add / Edit Contact</h1>
+    {% if contact.id %}
+      <h1 class="text-center">Edit Contact</h1>
+    {% else %}
+      <h1 class="text-center">Add Contact</h1>
+    {% endif %}
 
-    <form action="{% url "contacts-new" %}" method="POST">
-      {% csrf_token %}
+    <form action="{{ action }}" method="POST">
+    {% csrf_token %}
       <ul>
         {{ form.as_p }}
       </ul>

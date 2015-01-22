@@ -2,3 +2,7 @@ h2 span.glyphicon.glyphicon-user {
     font-size: 3em;
     color: #098808;
 }
+
+table {
+    margin-top:10px;
+}
