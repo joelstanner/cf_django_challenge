@@ -6,3 +6,10 @@ h2 span.glyphicon.glyphicon-user {
 table {
     margin-top:10px;
 }
+
+td > a.btn {
+    padding: 0px 5px;
+    font-size: .6em;
+    line-height: 1.5;
+    border-radius: 8px;
+}
