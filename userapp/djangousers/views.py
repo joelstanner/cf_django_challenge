@@ -1,15 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from djangousers.models import Contact
 
 
-class ListContactView(ListView):
+def listing(request):
+    contact_list = Contact.objects.all()
+    paginator = Paginator(contact_list, 25, orphans=3) #Show 25 contacts per page
 
-    model = Contact
-    template_name = 'contact_list.html'
+    page = request.GET.get('page')
+    try:
+        contacts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        contacts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        contacts = paginator.page(paginator.num_pages)
+
+    return render_to_response('contact_list.html', {"contacts": contacts})
 
 
 class CreateContactView(CreateView):
