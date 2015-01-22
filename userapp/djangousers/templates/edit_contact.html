@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Contact List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/bootstrap/css/bootstrap.min.css"
+        rel="stylesheet" media="screen">
+  <link href="/static/base.css" rel="stylesheet" media="screen">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Add Contact</h1>
+
+    <form action="{% url "contacts-new" %}" method="POST">
+      {% csrf_token %}
+      <ul>
+        {{ form.as_ul }}
+      </ul>
+      <input id="save_contact" type="submit" value="Save" />
+    </form>
+
+    <a href="{% url "contacts-list" %}">back to list</a>
+
+  </div> <!--     /container      -->
+  <script src="/static/jquery/jquery-2.1.3.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>

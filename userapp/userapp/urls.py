@@ -5,6 +5,8 @@ import djangousers.views
 
 urlpatterns = patterns('',
     url(r'^$', djangousers.views.ListContactView.as_view(),
-        name='contact_list',),
+        name='contacts-list',),
+    url(r'^new$', djangousers.views.CreateContactView.as_view(),
+        name='contacts-new',),
     url(r'^admin/', include(admin.site.urls)),
 )
