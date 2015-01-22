@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'userapp.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+import djangousers.views
 
+urlpatterns = patterns('',
+    url(r'^$', djangousers.views.ListContactView.as_view(),
+        name='contact_list',),
     url(r'^admin/', include(admin.site.urls)),
 )
