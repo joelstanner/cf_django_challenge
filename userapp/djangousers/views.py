@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -53,3 +53,11 @@ class UpdateContactView(UpdateView):
                                     kwargs={'pk': self.get_object().id})
 
         return context
+
+class DeleteContactView(DeleteView):
+
+    model = Contact
+    template_name = 'delete_contact.html'
+
+    def get_success_url(self):
+        return reverse('contacts-list')

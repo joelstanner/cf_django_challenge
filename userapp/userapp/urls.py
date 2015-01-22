@@ -11,6 +11,8 @@ urlpatterns = patterns('',
         name='contacts-new',),
     url(r'^edit/(?P<pk>\d+)/$', djangousers.views.UpdateContactView.as_view(),
         name='contacts-edit',),
+    url(r'^delete/(?P<pk>\d+)/$', djangousers.views.DeleteContactView.as_view(),
+        name='contacts-delete',),
     url(r'^admin/', include(admin.site.urls)),
 )
 

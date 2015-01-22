@@ -17,6 +17,9 @@
     </form>
 
     <a href="{% url "contacts-list" %}">back to contacts list</a>
-
+    {% if contact.id %}
+      <a class="delete"
+         href="{% url "contacts-delete" pk=contact.id %}">Delete</a>
+    {% endif %}
   </div> <!--     /container      -->
 {% endblock %}
