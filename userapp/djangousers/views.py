@@ -9,7 +9,7 @@ from djangousers.models import Contact
 
 def listing(request):
     contact_list = Contact.objects.all()
-    paginator = Paginator(contact_list, 10, orphans=3) #Show 10 contacts per page
+    paginator = Paginator(contact_list, 50, orphans=3) #Show 50 contacts / page
 
     page = request.GET.get('page')
     try:
